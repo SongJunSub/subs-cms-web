@@ -10,7 +10,8 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App />
-    <ReservationProvider>
+    <NotificationPanel />
+  <ReservationProvider
       <ReservationForm />
       <ReservationList />
     </ReservationProvider>
