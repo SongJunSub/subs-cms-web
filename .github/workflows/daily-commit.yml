@@ -1,0 +1,21 @@
+name: Daily Commit
+on:
+  schedule:
+    - cron: '0 15 * * *' # 매일 오후 3시(UTC)
+jobs:
+  auto-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Git user
+        run: |
+          git config --global user.name 'SongJunSub'
+          git config --global user.email 'song911130@gmail.com'
+      - name: Run code formatter (예시)
+        run: echo '// TODO: 코드 포맷팅 또는 문서 자동화 스크립트 추가'
+      - name: Commit and push changes
+        run: |
+          git add .
+          git commit -m 'chore: 자동 포맷팅 및 잔디 관리 커밋 [skip ci]' || echo 'No changes to commit'
+          git push
+
