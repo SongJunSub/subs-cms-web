@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subs-cms-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subs-cms-frontend
+  template:
+    metadata:
+      labels:
+        app: subs-cms-frontend
+    spec:
+      containers:
+        - name: subs-cms-frontend
+          image: subs-cms-frontend:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: subs-cms-frontend
+spec:
+  selector:
+    app: subs-cms-frontend
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+
